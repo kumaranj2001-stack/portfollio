@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Palette: Editorial Cream / Charcoal / Gold / Teal ── */
+  --color-cream:        #f3ede1;   /* main light bg */
+  --color-paper:        #f8f4ea;   /* lighter card / nav bg */
+  --color-ivory:        #fbf8f1;   /* inner card */
+  --color-ink:          #1a1713;   /* near-black text / dark bg */
+  --color-charcoal:     #1f1c17;   /* dark section bg */
+  --color-coal:         #26221d;   /* dark card */
+  --color-graphite:     #2d2923;   /* dark card border */
+  --color-gold:         #b08a3e;   /* primary accent */
+  --color-gold-light:   #c9a663;
+  --color-gold-pale:    #e0c98f;
+  --color-teal:         #2f6e5c;   /* secondary accent */
+  --color-teal-pale:    #d9e6df;   /* pill background on light */
+  --color-mint-border:  #9eb9ad;
+  --color-stone:        #6b6453;   /* muted text on light */
+  --color-stone-light:  #8a8271;
+  --color-rule:         #e2d9c6;   /* hairline on light */
+  --color-mist:         #948c7a;   /* muted text on dark */
+
+  /* ── Typography ────────────────────────────────────────
+     Editorial Times family — Times New Roman primary,
+     with universal cross-platform serif fallbacks.        */
+  --font-serif: "Times New Roman", "Times", "Nimbus Roman", "Liberation Serif", "Georgia", serif;
+  --font-sans:  "Times New Roman", "Times", "Nimbus Roman", "Liberation Serif", "Georgia", serif;
+  --font-mono:  "Courier New", "Courier", ui-monospace, monospace;
+
+  --animate-fadeup: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 36s linear infinite;
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure every element inherits Times */
+*,
+*::before,
+*::after {
+  font-family: inherit;
+}
+
+/* All headings bold in Times */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+}
+
+/* Utility: small-caps / trackey labels use Times bold in uppercase */
+.font-mono,
+.font-sans {
+  font-family: var(--font-serif);
+}
+
+::selection { background: var(--color-gold); color: #fff; }
+
+/* Hairline utility */
+.hairline { border-color: var(--color-rule); }
+
+/* Scrollbar (subtle) */
+::-webkit-scrollbar        { width: 8px; }
+::-webkit-scrollbar-track  { background: var(--color-paper); }
+::-webkit-scrollbar-thumb  { background: #d4c8ad; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+
+/* Light page bg texture — very subtle paper grain via CSS only */
+body {
+  background-image:
+    radial-gradient(rgba(176, 138, 62, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Dark section reset */
+.section-dark { background-color: var(--color-charcoal); color: #f1ece0; }
+.section-dark ::selection { background: var(--color-gold); color: var(--color-ink); }
